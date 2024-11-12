@@ -1,5 +1,11 @@
-const numberOfDogs = document.getElementById("number-of-dogs");
-//numberOfDogs = "Dogs in shelters: " + fetch("http://localhost:5001/number_of_dogs")
+
+fetch("http://localhost:5001/number_of_dogs").then(response => response.json()).then(data => {
+   // console.log(data);
+    const numberOfDogs = document.getElementById("number-of-dogs");
+    numberOfDogs.innerHTML = "Dogs in shelters: " + data;
+}
+);
+
 //get number of dogs from api
 
 

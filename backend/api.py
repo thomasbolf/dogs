@@ -15,10 +15,10 @@ def serve_counties():
 @app.route("/number_of_dogs")
 def serve_num():
     #count number of dogs in animals.csv and return it
-    pd = pd.read_csv('animals.csv')
-    num_dogs = pd[pd['type'] == 'Dog'].shape[0]
+    df = pd.read_csv('animals.csv')
+    num_dogs = df[df['type'] == 'Dog'].shape[0]
     return str(num_dogs)
-    return 
+    
 
 
 if __name__ == '__main__':
