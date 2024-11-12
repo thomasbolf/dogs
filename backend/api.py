@@ -10,7 +10,7 @@ def serve_csv():
 
 @app.route("/counties")
 def serve_counties():
-    return send_file('county_counts.csv', mimetype='text/csv', as_attachment=True)
+    return send_file('county_counts2.csv', mimetype='text/csv', as_attachment=True)
 
 @app.route("/number_of_dogs")
 def serve_num():

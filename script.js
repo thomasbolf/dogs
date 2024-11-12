@@ -60,9 +60,10 @@ function ready(error, us, dogs) {
       dogData.set(+d.county, +d.frequency); 
     });
     const fipsCounty = new Map();
+
     dogs.forEach(d => {
         fipsCounty.set(+d.county, d.name); 
-      
+        
     });
 
     var texasCounties = topojson.feature(us, us.objects.counties).features.filter(function(d) {
@@ -95,10 +96,7 @@ function ready(error, us, dogs) {
               "<br>" +
               dogData.get(d.id) +
               "<br>" +
-              "dogs in shelters"
-            // dogData.get(d.id) +
-            //   "<br>" +
-            //   "dogs in shelters"
+              "dogs in shelters" 
           )
           .style("font-size", "70px")
           .style("left", d3.event.pageX + 10 + "px")
