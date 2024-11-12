@@ -1,9 +1,14 @@
 body {
-    text-align: center;  
+ text-align: center;  
   }
   
   .counties {
     fill: none;
+  }
+  .county {
+    stroke: black;
+    stroke-width: 0.5px;
+    stroke-linejoin: round;
   }
   
   .states {
@@ -20,6 +25,8 @@ body {
     box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.6);
     border: 0px;        
     border-radius: 2px;            
-    pointer-events: none;            
+    pointer-events: none;   
+    font-family: 'New Amsterdam';font-size: 22px;         
   }
+
   

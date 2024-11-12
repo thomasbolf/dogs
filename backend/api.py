@@ -1,6 +1,6 @@
 from flask import Flask, send_file
 from flask_cors import CORS
-
+import pandas as pd
 app = Flask(__name__)
 CORS(app)  
 
@@ -12,6 +12,13 @@ def serve_csv():
 def serve_counties():
     return send_file('county_counts.csv', mimetype='text/csv', as_attachment=True)
 
+@app.route("/number_of_dogs")
+def serve_num():
+    #count number of dogs in animals.csv and return it
+    pd = pd.read_csv('animals.csv')
+    num_dogs = pd[pd['type'] == 'Dog'].shape[0]
+    return str(num_dogs)
+    return 
 
 
 if __name__ == '__main__':

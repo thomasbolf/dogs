@@ -1,9 +1,18 @@
+const numberOfDogs = document.getElementById("number-of-dogs");
+//numberOfDogs = "Dogs in shelters: " + fetch("http://localhost:5001/number_of_dogs")
+//get number of dogs from api
+
+
 const svg = d3
-  .select("#d3-container")
-//  .select("body")
-  .append("svg")
-  .attr("width","100%")
-  .attr("height", "100%");
+    .select("#d3-container")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .style("display", "block")
+    .style("margin", "0 auto")
+    ;
+//  .attr("transform", "scale(1.5)");
+ // .attr("border", "1px solid black");
 
 const x = d3
   .scaleLinear()
@@ -12,8 +21,8 @@ const x = d3
 
 const color = d3
   .scaleThreshold()
-  .domain(d3.range(2.6, 75.1, (75.1 - 2.6) / 8))
-  .range(d3.schemeBlues[9]);
+  .domain(d3.range(1, 5000, (5000) / 8))
+  .range(d3.schemeReds[9]);
 
 
 
@@ -44,11 +53,17 @@ function ready(error, us, dogs) {
     dogs.forEach(d => {
       dogData.set(+d.county, +d.frequency); 
     });
+    const fipsCounty = new Map();
+    dogs.forEach(d => {
+        fipsCounty.set(+d.county, d.name); 
+      
+    });
+
     var texasCounties = topojson.feature(us, us.objects.counties).features.filter(function(d) {
         return d.id >= 48001 && d.id <= 48999;
       });    
     const g = svg.append("g")
-      .attr("transform", "translate(210,-870)rotate(-3)");
+      .attr("transform", "scale(6)translate(-310,-325)rotate(-3)");
      g
     .append("g")
     .attr("class", "counties")
@@ -61,17 +76,37 @@ function ready(error, us, dogs) {
     .attr("fill", d => {
         console.log(d.id);
         const value = dogData.get(d.id);
-        return value ? color(value) : "#ccc"; // Use color scale if value exists, else gray
+        return value ? color(value) : "#ccc";
       })
     .attr("d", path)
-    .attr("transform", "scale(3)")
-    .on("mouseout", function(d) {
-      tooltip.style("opacity", 0);
-    });
-  svg
-    .append("path")
-    .datum(topojson.mesh(us, us.objects.states, (a, b) => a.id == "48"|| b=="48"))
-    .attr("class", "states")
-    .attr("d", path)
-    .attr('transform' , 'rotate(-180, '+0+',' +0 +')') ;
+    .on("mouseover", function (d) {
+
+        d3.select(this).style("fill", "orange").transition().duration(200); 
+        tooltip.transition().duration(200).style("opacity", 2);
+        tooltip
+          .html(
+            fipsCounty.get(d.id) +
+              "<br>" +
+              dogData.get(d.id) +
+              "<br>" +
+              "dogs in shelters"
+            // dogData.get(d.id) +
+            //   "<br>" +
+            //   "dogs in shelters"
+          )
+          .style("font-size", "70px")
+          .style("left", d3.event.pageX + 10 + "px")
+          .style("top", d3.event.pageY - 28 + "px")
+          .style("border-radius", "10px");
+      })
+      .on("mouseout", function() {
+
+      d3.select(this)
+        .style("fill", d => {
+          const value = dogData.get(d.id);
+          return value ? color(value) : "#ccc"; 
+        });
+        tooltip.transition().duration(500).style("opacity", 0);
+      });
+    
 }
