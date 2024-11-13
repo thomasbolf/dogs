@@ -1,13 +1,24 @@
 body {
  text-align: center;  
   }
+  .d3-container{
+    width:500px;
+    height:477px;
+    position:relative; 
+    border: 2px solid black; 
+    margin: 0 auto; 
+    border-style: double; 
+    border-width: 10px; 
+    padding-top: 10px; 
+    padding-bottom: 10px;
+  }
   
   .counties {
     fill: none;
   }
   .county {
     stroke: black;
-    stroke-width: 0.5px;
+    stroke-width: 1px;
     stroke-linejoin: round;
   }
   

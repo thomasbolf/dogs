@@ -9,21 +9,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js" integrity="sha256-tHoAPGoNdhIR28YHl9DWLzeRfdwigkH7OCBXMrHXhoM=" crossorigin="anonymous"></script>
     <title>Choropleth Map</title>
 </head>
-<body>
-    <div style="text-align: center;">
-        <h1 id='title' style="padding:50px; font-size: 100px;">Texas Petfinder Data</h1>
-        <h1 id="number-of-dogs" style="padding:50px; font-size: 50px;">Number of Animals Listed on PetFinder: </h1>
-        <div id="d3-container" style="width:1510px;height:1560px;position:relative; border: 2px solid black; margin: 0 auto;"></div>
+<body style="background-color:#ebe4e0">
+    <div style="text-align: center; background-color:#ebe4e0">
+        <h1 id='title' style=" font-size: 30px;">Texas Petfinder Data</h1>
+        <h1 id="number-of-dogs" style="padding:20px; font-size: 20px;">Number of Animals Listed on PetFinder: </h1>
+        <div id="d3-container" class="d3-container" ></div>
+        <div class="describeCounty" style="padding:20px; font-size: 20px; position:relative; width: 500px; border: double; margin: 0 auto; border-width:10px;">hello</div>
+        <p> This is a heatmap of the number of animals listed on PetFinder in each county in Texas. The darker the color, the more animals are listed in that county. </p>
     </div>
 
     <div id='container'>
         <svg id='canvas'>
              
         </svg>
-        <div id='rightSide'>
-            <div id='tooltip'>
- 
-            </div>
+  
             
 </body>
 <script defer src='script.js'></script>

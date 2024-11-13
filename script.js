@@ -1,12 +1,10 @@
 
 fetch("http://localhost:5001/number_of_dogs").then(response => response.json()).then(data => {
-   // console.log(data);
     const numberOfDogs = document.getElementById("number-of-dogs");
-    numberOfDogs.innerHTML = "Dogs in shelters: " + data;
+    numberOfDogs.innerHTML = "Pets in shelters: " + data;
 }
 );
 
-//get number of dogs from api
 
 
 const svg = d3
@@ -17,8 +15,6 @@ const svg = d3
     .style("display", "block")
     .style("margin", "0 auto")
     ;
-//  .attr("transform", "scale(1.5)");
- // .attr("border", "1px solid black");
 
 const x = d3
   .scaleLinear()
@@ -70,7 +66,7 @@ function ready(error, us, dogs) {
         return d.id >= 48001 && d.id <= 48999;
       });    
     const g = svg.append("g")
-      .attr("transform", "scale(6)translate(-310,-325)rotate(-3)");
+      .attr("transform", "scale(2)translate(-310,-325)rotate(-3)");
      g
     .append("g")
     .attr("class", "counties")
@@ -96,9 +92,9 @@ function ready(error, us, dogs) {
               "<br>" +
               dogData.get(d.id) +
               "<br>" +
-              "dogs in shelters" 
+              "pets in shelters" 
           )
-          .style("font-size", "70px")
+          .style("font-size", "30px")
           .style("left", d3.event.pageX + 10 + "px")
           .style("top", d3.event.pageY - 28 + "px")
           .style("border-radius", "10px");
