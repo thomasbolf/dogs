@@ -12,6 +12,13 @@ body {
     padding-top: 10px; 
     padding-bottom: 10px;
   }
+  .incrementer{
+    background-color: red;
+    position: relative;
+    margin: 0 auto;
+    white-space: nowrap;
+    display: inline-block;
+  }
   
   .counties {
     fill: none;

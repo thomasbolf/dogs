@@ -1,7 +1,15 @@
 
 fetch("http://localhost:5001/number_of_dogs").then(response => response.json()).then(data => {
-    const numberOfDogs = document.getElementById("number-of-dogs");
-    numberOfDogs.innerHTML = "Pets in shelters: " + data;
+    const numberOfDogs = document.getElementById("countNum");
+    for (let i = 0; i < +data; i++){
+      //wait half a second
+      setTimeout(() => {
+        numberOfDogs.innerHTML = i;
+      }
+      , 20 * i);
+    }
+    
+
 }
 );
 
@@ -107,6 +115,11 @@ function ready(error, us, dogs) {
           return value ? color(value) : "#ccc"; 
         });
         tooltip.transition().duration(500).style("opacity", 0);
+      })
+      .on("click", function(d) {
+        let countyInfo = document.getElementById("county-info");
+        countyInfo.innerHTML = "County: " + fipsCounty.get(d.id) + "<br>" + "Pets in shelters: " + dogData.get(d.id);
+        console.log(d.id);
       });
-    
-}
+    }
+

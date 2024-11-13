@@ -12,18 +12,14 @@
 <body style="background-color:#ebe4e0">
     <div style="text-align: center; background-color:#ebe4e0">
         <h1 id='title' style=" font-size: 30px;">Texas Petfinder Data</h1>
-        <h1 id="number-of-dogs" style="padding:20px; font-size: 20px;">Number of Animals Listed on PetFinder: </h1>
+        <h1 id="number-of-dogs" style="padding:20px; font-size: 20px; text-align:center">Number of Animals Listed on PetFinder: <div class = "incrementer" id="countNum" "></div></h1>
         <div id="d3-container" class="d3-container" ></div>
-        <div class="describeCounty" style="padding:20px; font-size: 20px; position:relative; width: 500px; border: double; margin: 0 auto; border-width:10px;">hello</div>
+        <div class="describeCounty" id="county-info" style="padding:20px; font-size: 20px; position:relative; width: 500px; border: double; margin: 0 auto; border-width:10px;">hello</div>
         <p> This is a heatmap of the number of animals listed on PetFinder in each county in Texas. The darker the color, the more animals are listed in that county. </p>
+        <!-- <div id="county-info" style="padding:20px; font-size: 20px;">County: </div> -->
     </div>
 
     <div id='container'>
-        <svg id='canvas'>
-             
-        </svg>
-  
-            
 </body>
 <script defer src='script.js'></script>
 </html>
